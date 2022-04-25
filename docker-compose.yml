@@ -7,7 +7,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: tnwjeans/laravel9-app
+        image: avdeisgn/tnwjeans-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
@@ -15,7 +15,7 @@ services:
         depends_on: 
             - redis
         networks: 
-            - laravel-9
+            - tnw-network
     
     # nginx
     nginx:
@@ -23,12 +23,12 @@ services:
         image: nginx:alpine
         restart: unless-stopped
         ports: 
-            - "8989:80"
+            - "8000:80"
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks: 
-            - laravel-9
+            - tnw-network
 
     # db mysql
     mysql:
@@ -45,12 +45,27 @@ services:
         ports: 
             - "3388:3306"
         networks: 
-            - laravel-9
+            - tnw-network
+    
+    # db mysql
+    phpmyadmin:
+        container_name: tnw-phpmyadmin
+        image: phpmyadmin/phpmyadmin:latest
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+        ports:
+            - "8001:80"
+        networks:
+            - tnw-network
+        depends_on:
+            - mysql       
 
     # queue
     queue:
         container_name: tnw-queue
-        image: tnwjeans/laravel9-app
+        image: avdeisgn/tnwjeans-app
         restart: unless-stopped
         command: "php artisan queue:work"
         volumes: 
@@ -59,15 +74,15 @@ services:
             - redis
             - app
         networks: 
-            - laravel-9
+            - tnw-network
 
     # redis
     redis:
         container_name: tnw-redis
         image: redis:latest
         networks: 
-            - laravel-9
+            - tnw-network
 
 networks: 
-    laravel-9:
+    tnw-network:
         driver: bridge
