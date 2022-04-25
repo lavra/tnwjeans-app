@@ -28,7 +28,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Link de redefinição de senha por e-mail') }}
+                    {{ __('Recuperar Senha') }}
                 </x-button>
             </div>
         </form>
