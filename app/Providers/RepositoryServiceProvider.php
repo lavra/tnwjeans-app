@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Interfaces\ConfigSiteInterface;
-use App\Repositories\ConfigSiteRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -15,8 +13,22 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ConfigSiteInterface::class, ConfigSiteRepository::class);
+        if (env('APP_ENV') === 'production') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
 
+        $models = array(
+            'Whatsapp',
+            'Shopping',
+            'ConfigSite',
+            'SocialShare',
+            'SocialFollow',
+            'SocialNetwork'
+        );
+
+        foreach ($models as $model) {
+            $this->app->bind("App\Interfaces\\{$model}Interface", "App\Repositories\\{$model}Repository");
+        }
     }
 
     /**
