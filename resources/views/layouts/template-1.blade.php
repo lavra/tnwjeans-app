@@ -214,7 +214,7 @@
     })(jQuery);
 
 </script>
-{{-- Configuração do select paises do Whatsapp--}}
+{{-- Configuração do select paises do Whatsapp --}}
 <script>
     $("#country_selector").countrySelect({
         defaultCountry: "br",

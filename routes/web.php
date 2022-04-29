@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\{
+
+    AdminController,
+
+};
+
 use App\Http\Controllers\Web\{
     HomeController,
     ProductController,
@@ -15,9 +21,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/admin', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+
+});
+ 
+
 
 /*
 |--------------------------------------------------------------------------
