@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ConfigSite extends Model
+class AdminSliderHome extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'color',
-        'color_style',
-        'layout_style',
-        'separator_style',
-        'mainslider'
-    ]; 
+        'page',
+        'style',
+        'image',
+        'thumb',
+        'order',
+        'active'
+    ];
 }

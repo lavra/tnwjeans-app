@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\{
 
     AdminController,
+    AdminSliderHomeController,
 
 };
 
@@ -24,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+
+    Route::get('/admin/slider-1', [AdminSliderHomeController::class, 'index'])->name('admin.slider1');
+    Route::get('/admin/slider-1/create', [AdminSliderHomeController::class, 'create'])->name('admin.slider1.create');
+    Route::post('/admin/slider-1/store', [AdminSliderHomeController::class, 'store'])->name('admin.slider1.store');
 
 });
  
