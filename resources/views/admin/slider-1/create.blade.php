@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <img src="http://localhost:8000/img/logo-tnwjeans-2.png" alt="TNW JEANS" width="60" height="60" />
             </div>
@@ -20,6 +20,15 @@
                         <input  class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" id="order" type="number" name="order" autofocus="autofocus">
                     </div>
 
+                    </br>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700" for="order">Tipo da Imagem</label>
+                        <select class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" name="page">
+                            <option value="1">Desktop</option>
+                            <option value="2">Moble</option>
+                        </select>
+                    </div>
+
                     <!-- Active -->
                     <div class="block mt-4">
                         <label for="active" class="inline-flex items-center">
@@ -31,7 +40,7 @@
                     </br>
                     <!-- Select file -->
                     <div>
-                        <input class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="file" name="image">
+                        <input class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" name="image">
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
