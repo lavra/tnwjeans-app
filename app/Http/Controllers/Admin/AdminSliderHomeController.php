@@ -22,6 +22,7 @@ class AdminSliderHomeController extends Controller
      */
     public function index()
     {
+        dd($this->model->all());
         return view('admin.slider-1.index');
     }
 
@@ -43,17 +44,16 @@ class AdminSliderHomeController extends Controller
      */      
     public function store(UploadSlider $request)
     {
-        $data = $request->all();
+        $data = $request->all();        
 
-        if ($request->image) {
+        $data['style'] = 1;        
 
-            $data['image'] = $request->image->store('img/slider') ;
+        $image = time().'.'.$request->image->extension();
+        $data['image'] = $request->image->storeAs('img/slider', $image);
 
-            //$extension = $request->image->getClientOriginalExtension();
-            //$data['image'] = $request->image->storeAs('img/slider', now() . ".{$extension}") ;
-    
-        }
+        $data['active'] = isset($data['active']) ? 1 : 0;
 
+        $this->model->create($data);
 
         return redirect()->route('admin.slider1');
 
