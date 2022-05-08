@@ -5,15 +5,19 @@ services:
     app:
         container_name: tnw-app
         build:
-            context: .
+            args:
+                user: avdesign
+                uid: 1000
+            context: ./
             dockerfile: Dockerfile
-        image: avdeisgn/tnwjeans-app
+        image: avdeisgn/tnwjeans-app 
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
             - ./:/var/www
         depends_on: 
             - redis
+            - queue
         networks: 
             - tnw-network
     
@@ -23,7 +27,7 @@ services:
         image: nginx:alpine
         restart: unless-stopped
         ports: 
-            - "8000:80"
+            - "80:80"
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
@@ -42,8 +46,6 @@ services:
             MYSQL_USER: ${DB_USERNAME}
         volumes: 
             - ./.docker/mysql/dbdata:/var/lib/mysql
-        ports: 
-            - "3388:3306"
         networks: 
             - tnw-network
     
@@ -56,7 +58,7 @@ services:
             PMA_PORT: 3306
             PMA_ARBITRARY: 1
         ports:
-            - "8001:80"
+            - "80:80"
         networks:
             - tnw-network
         depends_on:
@@ -65,14 +67,19 @@ services:
     # queue
     queue:
         container_name: tnw-queue
-        image: avdeisgn/tnwjeans-app
+        build:
+            args:
+                user: avdesign
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: avdeisgn/tnwjeans-app    
         restart: unless-stopped
         command: "php artisan queue:work"
         volumes: 
             - ./:/var/www
         depends_on: 
             - redis
-            - app
         networks: 
             - tnw-network
 
