@@ -78,7 +78,7 @@ class HomeController extends Controller
     {
         $instagram = [];
         $products = $this->getProducts();
-        $instagram = $this->postInstagram();
+        //$instagram = $this->postInstagram();
         $socials = $this->interSocial->get();
         $configSite = $this->configSite->setId(1);
         $configCompany = $this->apiService->dataCompany();
