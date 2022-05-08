@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\AdminSliderHome;
 use App\Services\UserAgent;
 use App\Services\ApiService;
 use App\Http\Controllers\Controller;
@@ -47,18 +48,24 @@ class HomeController extends Controller
      */
     private $interSocial;
 
+    /**
+     * @var Fotos Slider Home
+     */
+    private $sliderHome;
+
 
 
     public function __construct(
         UserAgent $userAgent,
         ConfigSite $configSite,
         ApiService $apiService,
-        InterSocial $interSocial)
+        InterSocial $interSocial,
+        AdminSliderHome $sliderHome)
     {
-
         $this->userAgent = $userAgent;
         $this->configSite = $configSite;
         $this->apiService = $apiService;
+        $this->sliderHome = $sliderHome;
         $this->interSocial = $interSocial;
     }
 
@@ -71,14 +78,21 @@ class HomeController extends Controller
     {
         $instagram = [];
         $products = $this->getProducts();
-        //$instagram = $this->postInstagram();
+        $instagram = $this->postInstagram();
         $socials = $this->interSocial->get();
         $configSite = $this->configSite->setId(1);
         $configCompany = $this->apiService->dataCompany();
         $isMobile = $this->userAgent->isMobile();
+        $sliders = $this->sliderHome->orderBy('order')->get();
 
         return view("{$this->view}.home-1", compact(
-            'configSite', 'isMobile', 'socials', 'products', 'instagram', 'configCompany'
+            'configSite',
+            'isMobile',
+            'sliders',
+            'socials',
+            'products',
+            'instagram',
+            'configCompany'
         ));
     }
 

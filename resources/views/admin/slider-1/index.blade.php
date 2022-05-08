@@ -16,25 +16,48 @@
                                         Foto
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Visivel
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                         Ordem
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                         Status
                                     </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Ações
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b">
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Mark
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Otto
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @mdo
-                                    </td>
-                                </tr>                   
+                                @foreach ($sliders as $slider)
+                                    <tr class="border-b">
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            <img src="{{ url("storage/{$slider->image}") }}" alt="Tnw Jeans" class="object-cover w-20">
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            @if($slider->page == 1) 
+                                                Desktop
+                                            @else    
+                                                Mobile
+                                            @endif    
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{$slider->order}}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            @if($slider->active == 1) 
+                                                Ativo
+                                            @else    
+                                                Inativo
+                                            @endif  
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            <a href="{{ route('admin.slider1.edit', $slider->id) }}" class="bg-green-200 rounded-full py-2 px-6">Editar</a> |
+                                            <a href="{{ route('admin.slider1.destroy', $slider->id) }}" class="bg-green-200 rounded-full py-2 px-6">Excluir</a> 
+                                        </td>
+                                    </tr> 
+                                @endforeach                      
                             </tbody>
                         </table>
                     </div>
