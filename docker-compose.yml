@@ -58,7 +58,7 @@ services:
             PMA_PORT: 3306
             PMA_ARBITRARY: 1
         ports:
-            - "80:80"
+            - "8001:80"
         networks:
             - tnw-network
         depends_on:
