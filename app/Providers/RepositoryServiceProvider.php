@@ -13,10 +13,11 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /**
         if (env('APP_ENV') === 'production') {
             $this->app['request']->server->set('HTTPS', true);
         }
-
+        **/
         $models = array(
             'Whatsapp',
             'Shopping',
