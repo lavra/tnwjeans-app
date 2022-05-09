@@ -5,19 +5,15 @@ services:
     app:
         container_name: tnw-app
         build:
-            args:
-                user: avdesign
-                uid: 1000
-            context: ./
+            context: .
             dockerfile: Dockerfile
-        image: avdeisgn/tnwjeans-app 
+        image: especializati/laravel9-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
             - ./:/var/www
         depends_on: 
             - redis
-            - queue
         networks: 
             - tnw-network
     
@@ -46,40 +42,22 @@ services:
             MYSQL_USER: ${DB_USERNAME}
         volumes: 
             - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports: 
+            - "3388:3306"
         networks: 
             - tnw-network
-    
-    # db mysql
-    phpmyadmin:
-        container_name: tnw-phpmyadmin
-        image: phpmyadmin/phpmyadmin:latest
-        environment:
-            PMA_HOST: mysql
-            PMA_PORT: 3306
-            PMA_ARBITRARY: 1
-        ports:
-            - "8001:80"
-        networks:
-            - tnw-network
-        depends_on:
-            - mysql       
 
     # queue
     queue:
         container_name: tnw-queue
-        build:
-            args:
-                user: avdesign
-                uid: 1000
-            context: ./
-            dockerfile: Dockerfile
-        image: avdeisgn/tnwjeans-app    
+        image: especializati/laravel9-app
         restart: unless-stopped
         command: "php artisan queue:work"
         volumes: 
             - ./:/var/www
         depends_on: 
             - redis
+            - app
         networks: 
             - tnw-network
 
