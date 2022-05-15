@@ -77,7 +77,7 @@
 <script type="text/javascript" src="{{asset('js/plugins/whatsapp/js/custom-whatsapp.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/plugins/whatsapp/countries/js/countrySelect.js')}}"></script>
 <!-- Live Style Switcher JS File - only demo -->
-<script type="text/javascript" src="{{asset('js/styleswitcher.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/styleswitcher.js?123')}}"></script>
 
 <!-- Main JS Initialization File -->
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>

@@ -82,6 +82,17 @@ $('#is_light').on('click', function() {
 });
 
 function setActiveStyleSheet(title) {
+
+	jQuery.ajax({
+		type:'POST',
+		url:'/config/website-color',
+		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		data:{color: title},
+		success:function(data){
+		   $("#msg").html(data.msg);
+		}
+	 });
+	 
 	var i, a, main;
 	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
 		if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
@@ -193,6 +204,16 @@ window.onload = function(e) {
 jQuery("input.dark_switch").bind("click", function() {
 	var boxed_switch = jQuery(this).attr('value');
 
+	jQuery.ajax({
+		type:'POST',
+		url:'/config/dark-switch',
+		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		data:{color_style: boxed_switch},
+		success:function(data){
+		   $("#msg").html(data.msg);
+		}
+	 });
+
 	if(boxed_switch == 'dark') {
 		jQuery("body").removeClass('dark');
 		jQuery("body").addClass('dark');
@@ -214,6 +235,16 @@ jQuery("input.dark_switch").bind("click", function() {
 jQuery("input.boxed_switch").bind("click", function() {
 	var boxed_switch = jQuery(this).attr('value');
 
+	jQuery.ajax({
+		type:'POST',
+		url:'/config/dark-switch',
+		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		data:{boxed_switch: boxed_switch},
+		success:function(data){
+		   $("#msg").html(data.msg);
+		}
+	 });
+
 	if(boxed_switch == 'boxed') {
 		jQuery("body").removeClass('boxed');
 		jQuery("body").addClass('boxed');
@@ -232,6 +263,16 @@ jQuery("input.boxed_switch").bind("click", function() {
 **/
 jQuery("input.separator_switch").bind("click", function() {
 	var separator_switch = jQuery(this).attr('value');
+
+	jQuery.ajax({
+		type:'POST',
+		url:'/config/dark-switch',
+		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		data:{separator_switch: separator_switch},
+		success:function(data){
+		   $("#msg").html(data.msg);
+		}
+	 });
 
 	if(separator_switch == 'skew') {
 		jQuery("body").removeClass('reversed-skew');

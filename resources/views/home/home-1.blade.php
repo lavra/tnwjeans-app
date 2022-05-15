@@ -13,9 +13,13 @@
         </div>
         <div class="loader5" id="loader"></div>
     </div>
-    {{-- Configuração: Style --}}
-    {{-- @include('configuration.style-1') --}}
 
+    @auth
+        {{-- Configuração: Style --}}
+        
+        @include('configuration.style-1')
+    @endauth
+    
     <div class="wrapper">
         {{-- Header --}}
         @include('headers.header-1')

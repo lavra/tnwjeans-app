@@ -15,6 +15,7 @@ class AdminSliderHomeController extends Controller
     {
         $this->model = $model;
     }
+    
     /**
      * Display a listing of the resource.
      *
