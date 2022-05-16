@@ -66,6 +66,7 @@ class ConfigWebsiteController extends Controller
      */
     public function separator_switch(Request $request)
     {
+
         $config = $this->model->find(1);
         $data = $request->all();
 

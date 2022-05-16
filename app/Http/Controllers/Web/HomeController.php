@@ -85,6 +85,9 @@ class HomeController extends Controller
         $isMobile = $this->userAgent->isMobile();
         $sliders = $this->sliderHome->orderBy('order')->get();
 
+
+
+
         return view("{$this->view}.home-1", compact(
             'configSite',
             'isMobile',
