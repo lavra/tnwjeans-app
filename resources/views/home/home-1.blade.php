@@ -34,7 +34,7 @@
         {{-- About Section --}}
         @include('abouts.about-1')
         {{-- Project Section --}}
-        {{-- @include('projects.project-1') --}}
+        @include('projects.project-1') 
         @include('portfolios.portfolio-1')
         {{-- @include('facts.fact-1') --}}
         {{-- @include('newsletters.newsletter-1') --}}

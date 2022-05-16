@@ -266,9 +266,9 @@ jQuery("input.separator_switch").bind("click", function() {
 
 	jQuery.ajax({
 		type:'POST',
-		url:'/config/dark-switch',
+		url:'/config/separator_switch',
 		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-		data:{separator_switch: separator_switch},
+		data:{separator_style: separator_switch},
 		success:function(data){
 		   $("#msg").html(data.msg);
 		}

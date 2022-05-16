@@ -13,18 +13,18 @@ trait CompanyTrait
         $data->fantasy = 'TNW JEANS';
         $data->phone = '11 2081-4360';
         $data->address = 'Rua Xavantes, 596';
-        $data->district = 'Brás';
-        $data->city = 'São Paulo';
+        $data->district = 'BrÃ¡s';
+        $data->city = 'SÃ£o Paulo';
         $data->state = 'SP';
         $data->whatsapp = '11 99995-5939';
         $data->department = 'Vendas';
         $data->logo = 'https://tnwjeans.avdesign.com.br/img/logo-tnwjeans-2.png';
-        $data->message_whatsapp = 'Oi, visitei o site da TNW! Gostaria de mais informações sobre:';
+        $data->message_whatsapp = 'Oi, visitei o site da TNW! Gostaria de mais informaÃ§Ãµes sobre:';
         $data->api_url = 'https://appwebcatalogo.vesti.mobi/catalogo/tnw';
-        $data->copyright = 'Copyright© 2008 / '.date('Y').', TNW JEANS. todos os direitos reservados. By';        
+        $data->copyright = 'CopyrightÂ© 2008 / '.date('Y').', TNW JEANS. todos os direitos reservados. By';        
         $data->horary = new \stdClass();
-        $data->horary->weekday = 'SEG À SEX DAS 8H ÀS 17H:30';
-        $data->horary->saturday = 'SÁBADO DAS 8H ÀS 12H';
+        $data->horary->weekday = 'SEG Ã€ SEX DAS 8H Ã€S 17H:30';
+        $data->horary->saturday = 'SÃBADO DAS 8H Ã€S 12H';
     
         return $data;
     }
