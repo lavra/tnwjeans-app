@@ -7,7 +7,7 @@
     <div class="info-map">
         <div class="google-map">
             <div class="gmap_container">
-                <div id="gmap_canvas"></div>
+                <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.911483291344!2d-46.61594798502268!3d-23.535685884695738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd5c4e2bd5c72417c!2sTNW%20Jeans!5e0!3m2!1sen!2sbr!4v1652714382548!5m2!1sen!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
         </div>
     </div>
