@@ -48,10 +48,10 @@
                     <h1>
                         @if($configSite->color_style == 'dark')
                             <span class="text-light">{{$configCompany->whatsapp}}</span> <i class="fa fa-whatsapp text-success" aria-hidden="true"></i> <br>
-                            <span class="text-light">{{$configCompany->phone}}</span> <i class="fa fa-phone" aria-hidden="true"></i>
+                            {{-- <span class="text-light">{{$configCompany->phone}}</span> <i class="fa fa-phone" aria-hidden="true"></i> --}}
                         @else
                             <span class="text-dark">{{$configCompany->whatsapp}}</span> <i class="fa fa-whatsapp text-success" aria-hidden="true"></i> <br>
-                            <span class="text-dark">{{$configCompany->phone}}</span> <i class="fa fa-phone" aria-hidden="true"></i>
+                            {{-- <span class="text-dark">{{$configCompany->phone}}</span> <i class="fa fa-phone" aria-hidden="true"></i> --}}
                         @endif
                     </h1>
                     <p>
