@@ -11,16 +11,17 @@
                 <!-- Image Ends -->
                 <!-- Details Starts -->
                 <div class="col-md-12 col-lg-12 col-xl-6 offset-xl-1">
-                    <h1>Revendedor</h1>
-                    <h3>Faça sua encomenda</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus obcaecati pariatur officiis molestias eveniet harum laudantium sed optio iste. Iste, alias, non libero recusandae fugiat praesentium delectus inventore accusamus veniam!
-                    </p>
-                    <blockquote>
-                        " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
+                    <h2>SEJA UM REVENDEDOR</h2>
+                    <strong>Moda feminina, masculina e plus size.</strong> </br>
+                    È muito simples se cadastre através do nosso aplicativo, com seguintes documentos CPF ou CNPJ. Mínimo para compras 24 peças; sendo 3 por modelo ( tamanhos variados).</br>
+                    Compras online baixe o aplicativo tnw jeans , entrega para todo território nacional brasileiro.
+                    <p><strong>Compromissos com nossos clientes</strong></p> 
+                    <blockquote>                        
+                        Atendimento eficiente e rápido nas entregas das vendas, ou em caso de troca e devolução; equipe preparadas para resolverem possíveis adversidades com nossos clientes. Pensando sempre na qualidade de todos nossos serviços oferecidos.</br>
+                        Entre em contato conosco através do WhatsApp (11) 2081-4360
+                        E tire todas suas dúvidas para se tornar um revendedor da TNW jeans.</br>
                     </blockquote>
                     @if(!empty($socials))
-                        Nos encontre nas redes sociais 
                         <div class="social-icons">
                             <ul class="social">
                                 @foreach($socials as $social)

@@ -27,12 +27,13 @@
                     <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#quem-somos"><i class="fa fa-history"></i> QUEM SOMOS</a></li>
                     {{-- <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#colecoes-anteriores"><i class="fa fa-cog"></i> Coleções Anteriores</a></li> --}}
                     <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#portfolio"><i class="fa fa-image"></i> Campanha</a></li>
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#projectmanager"><i class="fa fa-user"></i> Revendedor </a></li>
                     @if($products)
                         <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#lookbook"><i class="fa fa-shopping-cart"></i> COMPRE ONLINE</a></li>
                     @endif
                     {{-- <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#video"><i class="fa fa-video-camera"></i> Video</a></li> --}}
                     @if(count($instagram) >= 1)
-                        <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#instagram"><i class="fa fa-instagram"></i> Instagram</a></li>
+                        <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#projectmanager"><i class="fa fa-instagram"></i> Instagram</a></li>
                     @endif
                     <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#lacalizacao"><i class="fa fa-map-marker"></i> Localização</a></li>
                 {{-- <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#contato"><i class="fa fa-envelope"></i> Contato</a></li> --}}
