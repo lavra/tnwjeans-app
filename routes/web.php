@@ -30,13 +30,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('config/boxed_switch', [ConfigWebsiteController::class, 'boxed_switch']);
     Route::post('config/separator_switch', [ConfigWebsiteController::class, 'separator_switch']);
 
-    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/painel', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/admin/slider-1', [AdminSliderHomeController::class, 'index'])->name('admin.slider1');
-    Route::get('/admin/slider-1/create', [AdminSliderHomeController::class, 'create'])->name('admin.slider1.create');
-    Route::post('/admin/slider-1/store', [AdminSliderHomeController::class, 'store'])->name('admin.slider1.store');
-    Route::get('/admin/slider-1/{id}/edit', [AdminSliderHomeController::class, 'edit'])->name('admin.slider1.edit');    
-    Route::put('/admin/slider-1/update/{id}', [AdminSliderHomeController::class, 'update'])->name('admin.slider1.update');    
-    Route::get('/admin/slider-1/destroy/{id}', [AdminSliderHomeController::class, 'destroy'])->name('admin.slider1.destroy');  
+    Route::get('/admin/slider-1/create', [AdminSliderHomeController::class, 'create'])->name('slider1.create');
+    Route::post('/admin/slider-1/store', [AdminSliderHomeController::class, 'store'])->name('slider1.store');
+    Route::get('/admin/slider-1/{id}/edit', [AdminSliderHomeController::class, 'edit'])->name('slider1.edit');    
+    Route::put('/admin/slider-1/update/{id}', [AdminSliderHomeController::class, 'update'])->name('slider1.update');    
+    Route::get('/admin/slider-1/destroy/{id}', [AdminSliderHomeController::class, 'destroy'])->name('slider1.destroy');  
 });
  
 

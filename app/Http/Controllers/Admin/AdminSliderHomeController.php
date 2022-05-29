@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadSlider;
 use App\Models\AdminSliderHome;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class AdminSliderHomeController extends Controller
 {
     private $model;
+
+    private $view = 'admin.slider-home-1';
 
     public function __construct(AdminSliderHome $model)
     {
@@ -25,8 +28,9 @@ class AdminSliderHomeController extends Controller
     {
         $sliders = $this->model->orderBy('order')->get();
 
-        return view('admin.slider-1.index', compact('sliders'));
+        return view("$this->view.index",  compact('sliders'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +39,7 @@ class AdminSliderHomeController extends Controller
      */
     public function create()
     {
-        return view('admin.slider-1.create');
+        return view("$this->view.create");
     }
 
     /**
@@ -46,13 +50,18 @@ class AdminSliderHomeController extends Controller
      */      
     public function store(UploadSlider $request)
     {
-        $data = $request->all();        
+        $data = $request->all();  
+        
 
         $data['style'] = 1;        
 
-        if ($request->image) {
-            $image = time().'.'.$request->image->extension();
-            $data['image'] = $request->image->storeAs('img/slider', $image);
+        if ($request->photo) {
+            $ext = $request->photo->extension();
+            $name = substr($request->photo->getClientOriginalName(), 0, 4);
+            $str = str_replace(".", "", $name);
+            $next_id = $this->model->latest()->first()->id + 1;
+            $image = Str::slug($str. '-' .$next_id). '.'. $ext;
+            $data['image'] = $request->photo->storeAs('img/slider', $image);
         }
 
         $data['active'] = isset($data['active']) ? 1 : 0;
