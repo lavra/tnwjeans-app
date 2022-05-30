@@ -3,8 +3,9 @@
 use App\Http\Controllers\Admin\{
 
     AdminController,
-    AdminSliderHomeController,
     ConfigWebsiteController,
+    AdminSliderHomeController,
+    AdminLookbookHomeController,
 
 };
 
@@ -31,15 +32,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('config/separator_switch', [ConfigWebsiteController::class, 'separator_switch']);
 
     Route::get('/painel', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/admin/slider-1', [AdminSliderHomeController::class, 'index'])->name('admin.slider1');
-    Route::get('/admin/slider-1/create', [AdminSliderHomeController::class, 'create'])->name('slider1.create');
-    Route::post('/admin/slider-1/store', [AdminSliderHomeController::class, 'store'])->name('slider1.store');
-    Route::get('/admin/slider-1/{id}/edit', [AdminSliderHomeController::class, 'edit'])->name('slider1.edit');    
-    Route::put('/admin/slider-1/update/{id}', [AdminSliderHomeController::class, 'update'])->name('slider1.update');    
-    Route::get('/admin/slider-1/destroy/{id}', [AdminSliderHomeController::class, 'destroy'])->name('slider1.destroy');  
-});
- 
+    Route::get('/painel/slider-1', [AdminSliderHomeController::class, 'index'])->name('slider1.index');
+    Route::get('/painel/slider-1/create', [AdminSliderHomeController::class, 'create'])->name('slider1.create');
+    Route::post('/painel/slider-1/store', [AdminSliderHomeController::class, 'store'])->name('slider1.store');
+    Route::get('/painel/slider-1/{id}/edit', [AdminSliderHomeController::class, 'edit'])->name('slider1.edit');    
+    Route::put('/painel/slider-1/update/{id}', [AdminSliderHomeController::class, 'update'])->name('slider1.update');    
+    Route::get('/painel/slider-1/destroy/{id}', [AdminSliderHomeController::class, 'destroy'])->name('slider1.destroy');  
 
+    Route::get('/painel/lookbook', [AdminLookbookHomeController::class, 'index'])->name('lookbook.index');
+    Route::get('/painel/lookbook/create', [AdminLookbookHomeController::class, 'create'])->name('lookbook.create');
+    Route::post('/painel/lookbook/store', [AdminLookbookHomeController::class, 'store'])->name('lookbook.store');
+    Route::get('/painel/lookbook/{id}/edit', [AdminLookbookHomeController::class, 'edit'])->name('lookbook.edit');    
+    Route::put('/painel/lookbook/update/{id}', [AdminLookbookHomeController::class, 'update'])->name('lookbook.update');    
+    Route::get('/painel/lookbook/destroy/{id}', [AdminLookbookHomeController::class, 'destroy'])->name('lookbook.destroy');
+
+});
 
 /*
 |--------------------------------------------------------------------------

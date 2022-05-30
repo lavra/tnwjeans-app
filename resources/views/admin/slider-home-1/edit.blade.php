@@ -35,28 +35,31 @@
           <!-- left column -->
           <div class="col-md-12">
             <!-- jquery validation -->
-            <div class="card card-primary">
+            <div class="card card-dark">
               <div class="card-header">
-                <h3 class="card-title">Adicionar Imagem <small> Slider Home</small></h3>
+                <h3 class="card-title">Editar Imagem <small> Slider Home</small></h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="upload-form" class="dropzone" method="POST" action="{{ route('admin.slider1.store')}}" enctype="multipart/form-data">
+              <form id="upload-form" method="POST" action="{{ route('slider1.update', $slider->id)}}" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="card-body">
                   <div class="row">
 
-                    <div class="col-1">
+                    <div class="col-2">
                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="active" id="image_active" checked>
+                        <input type="checkbox" class="form-check-input" name="active" id="image_active" @if($slider->active == 1) checked @endif>
                         <label class="form-check-label" for="image_active"><b>Ativo</b></label>
+                        <div><img src="{{ url("storage/{$slider->image}") }}" alt="" width="100px" /></div>
+                        
                       </div>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-3">
                       <div class="form-group">
                         <label for="image_order">Ordem</label>
-                        <input type="number" name="order" class="form-control" id="image_order" placeholder="Order">
+                        <input type="number" name="order" class="form-control" id="image_order" value="{{ $slider->order }}">
                       </div>
                     </div>
 
@@ -64,14 +67,13 @@
                       <div class="form-group">
                         <label for="image_page">Tipo da Imagem</label>
                         <select class="form-control" name="page" id="image_page">
-                          <option value="">Selecione</option>
-                          <option value="1">Desktop</option>
-                          <option value="2">Moble</option>
+                          <option value="1" @if($slider->page == 1) selected @endif>Desktop</option>
+                          <option value="2"  @if($slider->page == 2) selected @endif>Moble</option>
                         </select>
                       </div>
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-4">
                        <div class="form-group">
                         <label for="image__file">Imagem</label>
                         <div class="input-group">
@@ -97,8 +99,8 @@
                 </div>
 
                 <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Upload</button>
+                <div class="card-footer d-flex flex-row-reverse">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
                 </div>
               </form>
             </div><!-- /.card -->
@@ -135,11 +137,7 @@
           order: {
             required: true,
             number: true,
-          },
-          photo: {
-            required: true,
-            extension: "jpg|jpeg"
-          },
+          },         
           page: {
             required: true
           },
@@ -148,11 +146,7 @@
           order: {
             required: "A ordem é obrigatória",
             number: "Por favor, insira um número valido"
-          },
-          photo: {
-            required: "A imagem é obrigatória",
-            extension: "Faça o upload da imagem apenas nestes formatos (jpg, jpeg)"
-          },
+          },          
           page: {
             required: "O tipo de imagem é obrigatório"
           }

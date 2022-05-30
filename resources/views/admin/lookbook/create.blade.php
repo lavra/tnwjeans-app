@@ -1,6 +1,6 @@
 @extends('admin.layouts.template')
 @push('title')
-<title> TNW JEANS | Home}</title>
+<title> TNW JEANS | Lookbook</title>
 @endpush
 @push('head')
 <!-- Theme style -->
@@ -17,12 +17,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Slider Home</h1>
+            <h1>Lookbook</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active">Slider Home</li>
+              <li class="breadcrumb-item active">Lookbook</li>
             </ol>
           </div>
         </div>
@@ -37,11 +37,11 @@
             <!-- jquery validation -->
             <div class="card card-dark">
               <div class="card-header">
-                <h3 class="card-title">Adicionar Imagem <small> Slider Home</small></h3>
+                <h3 class="card-title">Adicionar Imagem <small> Lookbook</small></h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="upload-form" method="POST" action="{{ route('slider1.store')}}" enctype="multipart/form-data">
+              <form id="upload-form" method="POST" action="{{ route('lookbook.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="row">
@@ -57,17 +57,6 @@
                       <div class="form-group">
                         <label for="image_order">Ordem</label>
                         <input type="number" name="order" class="form-control" id="image_order" placeholder="Order">
-                      </div>
-                    </div>
-
-                    <div class="col-3">
-                      <div class="form-group">
-                        <label for="image_page">Tipo da Imagem</label>
-                        <select class="form-control" name="page" id="image_page">
-                          <option value="">Selecione</option>
-                          <option value="1">Desktop</option>
-                          <option value="2">Moble</option>
-                        </select>
                       </div>
                     </div>
 
@@ -88,9 +77,7 @@
                   
                   @if($errors->any())
                     @foreach($errors->all() as $error)
-
                         <p>{{ $error }}</p>
-
                     @endforeach
                   @endif
 
@@ -139,10 +126,7 @@
           photo: {
             required: true,
             extension: "jpg|jpeg"
-          },
-          page: {
-            required: true
-          },
+          }
         },
         messages: {
           order: {
@@ -152,9 +136,6 @@
           photo: {
             required: "A imagem é obrigatória",
             extension: "Faça o upload da imagem apenas nestes formatos (jpg, jpeg)"
-          },
-          page: {
-            required: "O tipo de imagem é obrigatório"
           }
         },
         errorElement: 'span',

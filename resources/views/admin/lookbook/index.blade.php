@@ -1,6 +1,6 @@
 @extends('admin.layouts.template')
 @push('title')
-<title> TNW JEANS | Home}</title>
+<title> TNW JEANS | </title>
 @endpush
 @push('head')
 <!-- Theme style -->
@@ -21,8 +21,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('slider1.index')}}">Home</a></li>
-              <li class="breadcrumb-item active">Slider Home</li>
+              <li class="breadcrumb-item"><a href="{{route('lookbook.index')}}">Home</a></li>
+              <li class="breadcrumb-item active">Lookbook</li>
             </ol>
           </div>
         </div>
@@ -34,7 +34,7 @@
     <div class="card-header">
         
         <div class="card-tools">
-        <a href="{{ route('slider1.create') }}" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
+        <a href="{{ route('lookbook.create') }}" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
         </div>
     </div>
   <div class="card-body p-0">
@@ -42,33 +42,25 @@
         <thead>
             <tr>
                 <th style="width: 10%">Imagem</th>
-                <th style="width: 8%">Tipo</th>
                 <th style="width: 8%"> Ordem</th>
                 <th style="width: 8%" class="text-center">Status</th>
                 <th style="width: 50%"></th>
             </tr>
         </thead>
         <tbody>
-            @if($sliders)
-            @foreach($sliders as $slider)
+            @if($lookbooks)
+            @foreach($lookbooks as $lookbook)
             <tr>
                 <td>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <img alt="Tnw Jeans" class="product-image" src="{{ url("storage/{$slider->image}") }}">
+                            <img alt="Tnw Jeans" class="product-image" src="{{ url("storage/{$lookbook->image}") }}">
                         </li>
                     </ul>
-                </td>
+                </td>               
+                <td class="project_order"><span class="badge badge-secondary right">{{ $lookbook->order }}</span></td>
                 <td class="project-state">
-                    @if($slider->page == 1) 
-                        <span class="badge badge-info">Desktop</span>
-                    @else    
-                        <span class="badge badge-secondary">Mobile</span>
-                    @endif                     
-                </td>
-                <td class="project_order"><span class="badge badge-secondary right">{{ $slider->order }}</span></td>
-                <td class="project-state">
-                    @if($slider->active == 1) 
+                    @if($lookbook->active == 1) 
                         <span class="badge badge-success">Ativo</span>
                     @else    
                         <span class="badge badge-danger">Inativo</span>
@@ -80,10 +72,10 @@
                         <i class="fas fa-folder"></i> Ver
                     </a>
                     --}}
-                    <a class="btn btn-info btn-sm" href="{{ route('slider1.edit', $slider->id) }}">
+                    <a class="btn btn-info btn-sm" href="{{ route('lookbook.edit', $lookbook->id) }}">
                         <i class="fas fa-pencil-alt"></i> Editar
                     </a>
-                    <a class="btn btn-danger btn-sm" href="{{ route('slider1.destroy', $slider->id) }}">
+                    <a class="btn btn-danger btn-sm" href="{{ route('lookbook.destroy', $lookbook->id) }}">
                         <i class="fas fa-trash"></i> Excluir                        
                     </a>
                 </td>

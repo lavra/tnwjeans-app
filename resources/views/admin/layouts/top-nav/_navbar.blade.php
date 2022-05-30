@@ -9,7 +9,7 @@
         <a href="{{route('dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('admin.slider1')}}" class="nav-link">Sliders Home</a>
+        <a href="{{route('slider1.index')}}" class="nav-link">Sliders Home</a>
       </li>        
      
     </ul>

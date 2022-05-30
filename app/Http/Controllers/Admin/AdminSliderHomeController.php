@@ -68,7 +68,7 @@ class AdminSliderHomeController extends Controller
 
         $this->model->create($data);
 
-        return redirect()->route('admin.slider1');
+        return redirect()->route('slider1.index');
 
     }
 
@@ -92,9 +92,9 @@ class AdminSliderHomeController extends Controller
     public function edit($id)
     {
         if (!$slider = $this->model->find($id))
-            return redirect()->route('admin.slider1');
-
-        return view('admin.slider-1.edit', compact('slider'));
+            return redirect()->route('slider1.index');
+            
+        return view("$this->view.edit", compact('slider'));
     }
 
     /**
@@ -107,26 +107,29 @@ class AdminSliderHomeController extends Controller
     public function update(UploadSlider $request, $id)
     {
         if (!$slider = $this->model->find($id))
-            return redirect()->route('admin.slider1');
+            return redirect()->route('slider1.index');
 
         $data = $request->all(); 
         $data['style'] = 1;   
         $data['active'] = isset($data['active']) ? 1 : 0; 
 
-        if ($request->image) {
-
-            $image = time().'.'.$request->image->extension();
+        if ($request->photo) {
+            $ext = $request->photo->extension();
+            $name = substr($request->photo->getClientOriginalName(), 0, 4);
+            $str = str_replace(".", "", $name);
+            $image_id = $this->model->latest()->first()->id;
+            $image = Str::slug($str. '-' .$image_id). '.'. $ext;          
 
             if ($slider->image && Storage::exists($slider->image)) {
                 Storage::delete($slider->image);
             }
 
-            $data['image'] = $request->image->storeAs('img/slider', $image);
+            $data['image'] = $request->photo->storeAs('img/slider', $image);
         }
 
         $slider->update($data);
 
-        return redirect()->route('admin.slider1');
+        return redirect()->route('slider1.index');
        
     }
 
@@ -142,7 +145,7 @@ class AdminSliderHomeController extends Controller
         $slider = $this->model->find($id);
 
         if (!$slider)
-            return redirect()->route('admin.slider1');
+            return redirect()->route('slider1.index');
 
         if ($slider->image && Storage::exists($slider->image)) {
             Storage::delete($slider->image);
@@ -150,6 +153,6 @@ class AdminSliderHomeController extends Controller
 
         $slider->delete();
 
-        return redirect()->route('admin.slider1');
+        return redirect()->route('slider1.index');
     }
 }
