@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UploadSlider;
+use App\Http\Requests\UploadImage;
 use App\Models\AdminSliderHome;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -45,10 +45,10 @@ class AdminSliderHomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param UploadSlider $request
+     * @param UploadImage $request
      * @return void
      */      
-    public function store(UploadSlider $request)
+    public function store(UploadImage $request)
     {
         $data = $request->all();  
         
@@ -57,7 +57,7 @@ class AdminSliderHomeController extends Controller
 
         if ($request->photo) {
             $ext = $request->photo->extension();
-            $name = substr($request->photo->getClientOriginalName(), 0, 4);
+            $name = substr($request->photo->getClientOriginalName(), 0, -4);
             $str = str_replace(".", "", $name);
             $next_id = $this->model->latest()->first()->id + 1;
             $image = Str::slug($str. '-' .$next_id). '.'. $ext;
@@ -100,11 +100,11 @@ class AdminSliderHomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UploadSlider $request
+     * @param UploadImage $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UploadSlider $request, $id)
+    public function update(UploadImage $request, $id)
     {
         if (!$slider = $this->model->find($id))
             return redirect()->route('slider1.index');
@@ -115,7 +115,7 @@ class AdminSliderHomeController extends Controller
 
         if ($request->photo) {
             $ext = $request->photo->extension();
-            $name = substr($request->photo->getClientOriginalName(), 0, 4);
+            $name = substr($request->photo->getClientOriginalName(), 0, -4);
             $str = str_replace(".", "", $name);
             $image_id = $this->model->latest()->first()->id;
             $image = Str::slug($str. '-' .$image_id). '.'. $ext;          

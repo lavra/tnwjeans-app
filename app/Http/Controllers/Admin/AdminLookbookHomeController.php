@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\AdminLookbookHome;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\AdminLookbookHome;
+use App\Http\Requests\UploadImage;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class AdminLookbookHomeController extends Controller
 {
@@ -44,27 +47,27 @@ class AdminLookbookHomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UploadImage  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadImage $request)
     {
         $data = $request->all();        
 
         if ($request->photo) {
             $ext = $request->photo->extension();
-            $name = substr($request->photo->getClientOriginalName(), 0, 4);
+            $name = substr($request->photo->getClientOriginalName(), 0, -4);
             $str = str_replace(".", "", $name);
-            //$next_id = $this->model->latest()->first()->id + 1;
-            $image = Str::slug($str). '.'. $ext;
-            $data['image'] = $request->photo->storeAs('img/slider', $image);
+            $next_id = $this->model->latest()->first()->id + 1;
+            $image = Str::slug($str. '-' .$next_id). '.'. $ext;
+            $data['image'] = $request->photo->storeAs('img/lookbook', $image);
         }
 
         $data['active'] = isset($data['active']) ? 1 : 0;
 
         $this->model->create($data);
 
-        return redirect()->route('slider1.index');
+        return redirect()->route('lookbook.index');
     }
 
     /**
@@ -86,19 +89,46 @@ class AdminLookbookHomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$lookbook = $this->model->find($id))
+            return redirect()->route('lookbook.index');
+            
+        return view("$this->view.edit", compact('lookbook'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UploadImage  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UploadImage $request, $id)
     {
-        //
+        if (!$lookbook = $this->model->find($id))
+        return redirect()->route('lookbook.index');
+
+        $data = $request->all(); 
+        $data['style'] = 1;   
+        $data['active'] = isset($data['active']) ? 1 : 0; 
+
+        if ($request->photo) {
+            $ext = $request->photo->extension();
+            $name = substr($request->photo->getClientOriginalName(), 0, -4);
+            $str = str_replace(".", "", $name);
+            $image_id = $this->model->latest()->first()->id;
+            $image = Str::slug($str. '-' .$image_id). '.'. $ext;          
+
+            if ($lookbook->image && Storage::exists($lookbook->image)) {
+                Storage::delete($lookbook->image);
+            }
+
+            $data['image'] = $request->photo->storeAs('img/lookbook', $image);
+        }
+
+        $lookbook->update($data);
+
+        return redirect()->route('lookbook.index');
+   
     }
 
     /**
@@ -109,6 +139,17 @@ class AdminLookbookHomeController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $lookbook = $this->model->find($id);
+
+        if (!$lookbook)
+            return redirect()->route('lookbook.index');
+
+        if ($lookbook->image && Storage::exists($lookbook->image)) {
+            Storage::delete($lookbook->image);
+        }
+
+        $lookbook->delete();
+
+        return redirect()->route('lookbook.index');   
+     }
 }
