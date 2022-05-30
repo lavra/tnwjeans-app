@@ -1,3 +1,4 @@
+@if(count($sliders) > 0)
 <div class="rev_slider_wrapper fullwidthbanner-container" data-alias="classicslider1" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
     <div id="rev_slider" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
         <ul>
@@ -13,3 +14,4 @@
         <div class="tp-static-layers"></div>
     </div>
 </div>
+@endif

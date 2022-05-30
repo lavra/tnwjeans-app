@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\AdminSliderHome;
+
 use App\Services\UserAgent;
 use App\Services\ApiService;
+use App\Models\AdminSliderHome;
+use App\Models\AdminLookbookHome;
 use App\Http\Controllers\Controller;
-use App\Interfaces\SocialNetworkInterface as InterSocial;
 use App\Interfaces\ConfigSiteInterface as ConfigSite;
+use App\Interfaces\SocialNetworkInterface as InterSocial;
 
 
 class HomeController extends Controller
@@ -54,19 +56,27 @@ class HomeController extends Controller
     private $sliderHome;
 
 
+       /**
+     * @var Fotos Lookbook Home
+     */
+    private $lookbookHome;
+
+
 
     public function __construct(
         UserAgent $userAgent,
         ConfigSite $configSite,
         ApiService $apiService,
         InterSocial $interSocial,
-        AdminSliderHome $sliderHome)
+        AdminSliderHome $sliderHome,
+        AdminLookbookHome $lookbookHome)
     {
         $this->userAgent = $userAgent;
         $this->configSite = $configSite;
         $this->apiService = $apiService;
         $this->sliderHome = $sliderHome;
         $this->interSocial = $interSocial;
+        $this->lookbookHome = $lookbookHome;
     }
 
     /**
@@ -78,15 +88,12 @@ class HomeController extends Controller
     {
         $instagram = [];
         $products = $this->getProducts();
-        //$instagram = $this->postInstagram();
         $socials = $this->interSocial->get();
         $configSite = $this->configSite->setId(1);
         $configCompany = $this->apiService->dataCompany();
         $isMobile = $this->userAgent->isMobile();
         $sliders = $this->sliderHome->orderBy('order')->get();
-
-
-
+        $lookbooks= $this->lookbookHome->orderBy('order')->get();
 
         return view("{$this->view}.home-1", compact(
             'configSite',
@@ -95,6 +102,7 @@ class HomeController extends Controller
             'socials',
             'products',
             'instagram',
+            'lookbooks',
             'configCompany'
         ));
     }

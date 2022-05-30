@@ -64,7 +64,6 @@
                       <div class="form-group">
                         <label for="image_page">Tipo da Imagem</label>
                         <select class="form-control" name="page" id="image_page">
-                          <option value="">Selecione</option>
                           <option value="1">Desktop</option>
                           <option value="2">Moble</option>
                         </select>

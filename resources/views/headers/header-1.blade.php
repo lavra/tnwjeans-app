@@ -23,10 +23,14 @@
             {{-- Navigation Menu Starts --}}
             <div class="collapse navbar-collapse nav-menu" id="navbarSupportedContent">
                 <ul class="nav-menu-inner ml-auto">
-                    <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#mainslider"><i class="fa fa-home"></i> HOME</a></li>
+                    @if(count($sliders) > 0)
+                        <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#mainslider"><i class="fa fa-home"></i> HOME</a></li>
+                    @endif
                     <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#quem-somos"><i class="fa fa-history"></i> QUEM SOMOS</a></li>
                     {{-- <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#colecoes-anteriores"><i class="fa fa-cog"></i> Coleções Anteriores</a></li> --}}
-                    <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#portfolio"><i class="fa fa-image"></i> Campanha</a></li>
+                    @if(count($lookbooks) > 0)
+                        <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#portfolio"><i class="fa fa-image"></i> Lookbook</a></li>
+                    @endif
                     <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#projectmanager"><i class="fa fa-user"></i> Revendedor </a></li>
                     @if($products)
                         <li><a data-toggle="collapse" data-target=".navbar-collapse.show" class="link-menu" href="#lookbook"><i class="fa fa-shopping-cart"></i> COMPRE ONLINE</a></li>

@@ -58,7 +58,7 @@ class AdminLookbookHomeController extends Controller
             $ext = $request->photo->extension();
             $name = substr($request->photo->getClientOriginalName(), 0, -4);
             $str = str_replace(".", "", $name);
-            $next_id = $this->model->latest()->first()->id + 1;
+            $next_id = isset($this->model->latest()->first()->id) ? $this->model->latest()->first()->id + 1 : 1;
             $image = Str::slug($str. '-' .$next_id). '.'. $ext;
             $data['image'] = $request->photo->storeAs('img/lookbook', $image);
         }
