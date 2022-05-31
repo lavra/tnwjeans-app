@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\AdminSliderHome;
-use Illuminate\Http\Request;
+use App\Models\AdminLookbookHome;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    private $model;
+    private $modelSlider;
+    private $modelLookbook;
+
     private $view = 'admin.home';
 
-    public function __construct(AdminSliderHome $model)
+    public function __construct(AdminSliderHome $modelSlider, AdminLookbookHome $modelLookbook)
     {
-        $this->model = $model;
+        $this->modelSlider = $modelSlider;
+        $this->modelLookbook = $modelLookbook;
     }
 
 
@@ -24,8 +27,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $sliders = $this->model->orderBy('order')->get();
+        $sliders = $this->modelSlider->orderBy('order')->get();
+        $lookbooks = $this->modelLookbook->orderBy('order')->get();
 
-        return view("{$this->view}.home-1", compact('sliders'));
+        return view("{$this->view}.home-1", compact('sliders', 'lookbooks'));
     }
 }
