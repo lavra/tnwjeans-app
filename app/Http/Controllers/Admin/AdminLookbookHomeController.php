@@ -105,7 +105,7 @@ class AdminLookbookHomeController extends Controller
     public function update(UploadImage $request, $id)
     {
         if (!$lookbook = $this->model->find($id))
-        return redirect()->route('lookbook.index');
+            return redirect()->route('lookbook.index');
 
         $data = $request->all(); 
         $data['style'] = 1;   

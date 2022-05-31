@@ -32,9 +32,7 @@
             @endif
         </section>
         {{-- About Section --}}
-        @include('abouts.about-1')
         {{-- Project Section --}}
-        @include('projects.project-1') 
         @include('portfolios.portfolio-1')
         {{-- @include('facts.fact-1') --}}
         {{-- @include('newsletters.newsletter-1') --}}
@@ -47,6 +45,8 @@
         @if($products)
             @include('teams.team-1')
         @endif
+        @include('abouts.about-1')
+        @include('projects.project-1') 
         @include('locations.location-1')
         {{-- @include('contacts.contact-1') --}}
         {{-- @include('testimonials.testimonial-1') --}}

@@ -10,7 +10,7 @@ use App\Models\AdminLookbookHome;
 use App\Http\Controllers\Controller;
 use App\Interfaces\ConfigSiteInterface as ConfigSite;
 use App\Interfaces\SocialNetworkInterface as InterSocial;
-
+use App\Models\AdminContent;
 
 class HomeController extends Controller
 {
@@ -56,10 +56,17 @@ class HomeController extends Controller
     private $sliderHome;
 
 
-       /**
+     /**
      * @var Fotos Lookbook Home
      */
     private $lookbookHome;
+
+    /**
+     * Conteudo do site
+     *
+     * @var mix
+     */
+    private $adminContent;
 
 
 
@@ -68,6 +75,7 @@ class HomeController extends Controller
         ConfigSite $configSite,
         ApiService $apiService,
         InterSocial $interSocial,
+        AdminContent $adminContent,
         AdminSliderHome $sliderHome,
         AdminLookbookHome $lookbookHome)
     {
@@ -76,6 +84,7 @@ class HomeController extends Controller
         $this->apiService = $apiService;
         $this->sliderHome = $sliderHome;
         $this->interSocial = $interSocial;
+        $this->adminContent = $adminContent;
         $this->lookbookHome = $lookbookHome;
     }
 
@@ -87,6 +96,7 @@ class HomeController extends Controller
     public function index()
     {
         $instagram = [];
+        $content = $this->adminContent->find(1);
         $products = $this->getProducts();
         $socials = $this->interSocial->get();
         $configSite = $this->configSite->setId(1);
@@ -100,6 +110,7 @@ class HomeController extends Controller
             'isMobile',
             'sliders',
             'socials',
+            'content',
             'products',
             'instagram',
             'lookbooks',

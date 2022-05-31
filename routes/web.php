@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\{
 
     AdminController,
     ConfigWebsiteController,
+    AdminContentsController,
     AdminSliderHomeController,
     AdminLookbookHomeController,
 
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/painel/lookbook/update/{id}', [AdminLookbookHomeController::class, 'update'])->name('lookbook.update');    
     Route::get('/painel/lookbook/destroy/{id}', [AdminLookbookHomeController::class, 'destroy'])->name('lookbook.destroy');
 
+    Route::get('/painel/content', [AdminContentsController::class, 'index'])->name('content.index');
+    Route::post('/painel/content/update/{id}', [AdminContentsController::class, 'update'])->name('content.update');
 });
 
 /*

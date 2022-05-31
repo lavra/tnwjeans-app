@@ -9,9 +9,11 @@
         <a href="{{route('dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('slider1.index')}}" class="nav-link">Sliders Home</a>
+        <a href="{{route('slider1.index')}}" class="nav-link">Slider</a>
       </li>        
-     
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('lookbook.index')}}" class="nav-link">Lookbook</a>
+      </li> 
     </ul>
 
     <!-- Right navbar links -->
@@ -28,11 +30,13 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      {{--
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      --}}
     </ul>
   </nav>
   <!-- /.navbar -->

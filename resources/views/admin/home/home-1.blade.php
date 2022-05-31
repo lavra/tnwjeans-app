@@ -1,7 +1,7 @@
 @extends('admin.layouts.template')
 
 @push('title')
-<title> TNW JEANS | Home}</title>
+<title> TNW JEANS | Home</title>
 @endpush
 
 @push('head')
@@ -14,8 +14,6 @@
 @push('body')
 <body class="hold-transition sidebar-mini">
 @endpush
-
-
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->

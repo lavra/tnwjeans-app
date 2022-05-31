@@ -2,8 +2,8 @@
 <section id="portfolio" class="portfolio">
     <div class="container">
         <div class="text-center top-text">
-            <h1><span>Outono</span> Inverno</h1>
-            <h4>Campanha 2020</h4>
+            <h1><span>{{$content->title}}</span> </h1>
+            <h4>{{$content->text}}</h4>
         </div>
 
         <!--
