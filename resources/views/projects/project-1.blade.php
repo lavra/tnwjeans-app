@@ -6,7 +6,7 @@
             <div class="row">
                 <!-- Image Starts -->
                 <div class="col-md-12 col-lg-12 col-xl-5">
-                    <img class="img-fluid projectmanagerpicture" src="img/projectmanager.jpg" alt="project manager">
+                    <img class="img-fluid projectmanagerpicture" src="img/revendedor/revenda-tnw-jeans.png" alt="project manager">
                 </div>
                 <!-- Image Ends -->
                 <!-- Details Starts -->
