@@ -64,20 +64,20 @@ class WhatsappController extends Controller
         $input['phone'] = preg_replace("/[^0-9]/", "", $input['phone']);
 
         if (empty($input['name'])) {
-            $error['name'] = 'O nome é obrigatório';
+            $error['name'] = 1;
         }
         if (empty($input['code'])) {
-            $error['country_selector'] = 'O código do pais é obrigatório';
+            $error['country_selector'] = 1;
         }
         if (empty($input['phone'])) {
-            $error['phone'] = 'O número do whatsapp é obrigatório';
+            $error['phone'] = 1;
         }
         if (empty($input['message'])) {
-            $error['message'] = 'A mensadem é obrigatória';
+            $error['message'] = 1;
         }
 
         if (!empty($error)) {
-            return response()->json(['error' => $error, 'message' => 'Verifique os campos abrigatórios']);
+            return response()->json(['error' => $error, 'message' => 'Preencha todos os campos corretamente']);
         } else {
             $data = $this->whatsappMessage->create($input);
             $configCompany = $this->apiService->dataCompany();

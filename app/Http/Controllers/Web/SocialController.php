@@ -45,6 +45,14 @@ class SocialController extends Controller
         $follow  = $this->interFollow->create($request->all());
         $network = $this->interNetwork->setId($request['social_network_id']);
 
+        $configCompany = $this->apiService->dataCompany();
+
+        // Whatsapp
+        if($request['social_network_id']  == 1) {
+            
+            return response()->json(['redirect' => "https://api.whatsapp.com/send?$configCompany->whatsapp&text=$configCompany->message_whatsapp"]);
+        }
+
         return response()->json(['redirect' => $network->link]);
     }
 

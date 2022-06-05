@@ -42,7 +42,7 @@
             <div class="col-md-12 col-lg-6 about-right">
                 <div class="about-right-side">
                     <a class="image-wrap mfp-youtube" href="https://www.youtube.com/watch?v=Uzp5qqmI0lc">
-                        <img class="img-fluid" src="{{asset('img/about/tnw-jeans.jpg')}}" alt="{{config('app.nam')}}">
+                        <img class="img-fluid" src="{{asset('img/about/tnw-jeans-video.jpg')}}" alt="{{config('app.nam')}}">
                         <span class="zoom-icon video-icon"></span>
                     </a>
                 </div>
