@@ -84,7 +84,7 @@ class WhatsappController extends Controller
             $number = str_replace('-', '', str_replace(' ', '',$configCompany->whatsapp));
             
             ($this->userAgent->isMobile()) ? $uag = 'api' : $uag = 'web';
-            $redirect = "https://{$uag}.whatsapp.com/send?phone={$number}&text={$data->message}";
+            $redirect = "https://{$uag}.whatsapp.com/send?phone=55{$number}&text={$data->message}";
 
             return response()->json([
                 'success' => true,
