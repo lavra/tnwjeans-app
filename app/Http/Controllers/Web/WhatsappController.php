@@ -83,7 +83,7 @@ class WhatsappController extends Controller
             $configCompany = $this->apiService->dataCompany();
             // No caso de whatsapp 'web'
             ($this->userAgent->isMobile()) ? $uag = 'api' : $uag = 'api';
-            $redirect = "https://{$uag}.whatsapp.com/send?phone=55{$configCompany->whatsapp}&text={$data->message}&source=&data=&app_absent=";
+            $redirect = "https://wa.me/{$configCompany->whatsapp}?text={$data->message}";
 
             return response()->json([
                 'success' => true,
