@@ -46,11 +46,13 @@ class SocialController extends Controller
         $network = $this->interNetwork->setId($request['social_network_id']);
 
         $configCompany = $this->apiService->dataCompany();
+        $number = str_replace('-', '', str_replace(' ', '',$configCompany->whatsapp));
+
 
         // Whatsapp
         if($request['social_network_id']  == 1) {
             
-            return response()->json(['redirect' => "https://api.whatsapp.com/send?$configCompany->whatsapp&text=$configCompany->message_whatsapp"]);
+            return response()->json(['redirect' => "https://api.whatsapp.com/send?55{$number}&text=$configCompany->message_whatsapp"]);
         }
 
         return response()->json(['redirect' => $network->link]);
@@ -109,7 +111,7 @@ class SocialController extends Controller
         $isMobile = $this->userAgent->isMobile();
         if ($network->name == 'whatsapp') {
             if ($isMobile) {
-                return "whatsapp://send?text={$url}/?share=true";
+                return "https://api.whatsapp.com/send?text={$url}/?share=true";
             } else {
                 return "https://web.whatsapp.com/send?text={$url}/?share=true";
             }
