@@ -74,10 +74,11 @@
 <script type="text/javascript" src="{{asset('js/plugins/inputmask/jquery.inputmask.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/plugins/inputmask/inputmask.binding.js')}}"></script>
 {{-- Whatsapp --}}
-<script type="text/javascript" src="{{asset('js/plugins/whatsapp/js/custom-whatsapp.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/plugins/whatsapp/countries/js/countrySelect.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/plugins/whatsapp/js/custom-whatsapp-2.js')}}"></script>
+{{-- <script type="text/javascript" src="{{asset('js/plugins/whatsapp/js/custom-whatsapp.js')}}"></script> --}}
+{{-- <script type="text/javascript" src="{{asset('js/plugins/whatsapp/countries/js/countrySelect.js')}}"></script> --}}
 <!-- Live Style Switcher JS File - only demo -->
-<script type="text/javascript" src="{{asset('js/styleswitcher.js?12345')}}"></script>
+<script type="text/javascript" src="{{asset('js/styleswitcher.js')}}"></script>
 
 <!-- Main JS Initialization File -->
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>

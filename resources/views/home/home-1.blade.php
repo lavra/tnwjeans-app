@@ -54,14 +54,16 @@
         {{-- @include('services.service-1') --}}
         {{-- Footer Section --}}
         @include('footers.footer-1')
-        @include('whatsapps.whatsapp-1')
-        {{-- Back To Top Starts
+        @include('whatsapps.whatsapp-2')
+
+        {{--
         <div id="back-top-wrapper" class="d-none d-sm-block">
             <p id="back-top">
                 <a href="index.html#top"><span></span></a>
             </p>
         </div>
         --}}
+        
     </div>
 @endsection
     {{--
